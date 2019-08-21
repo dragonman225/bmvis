@@ -1,0 +1,33 @@
+{
+  "name": "bmvis",
+  "version": "1.0.0",
+  "description": "Visualize bookamrks.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "rimraf dist && webpack --mode=development && npm run report",
+    "dev": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "report": "depcruise --exclude '^node_modules' --output-type dot --prefix 'https://github.com/dragonman225/bmvis/tree/master/' src/index.ts | dot -T svg > report/deps_graph.svg",
+    "upgrade": "pnpm i typescript@latest d3@latest eslint@latest dependency-cruiser@latest @typescript-eslint/parser@latest @typescript-eslint/eslint-plugin@latest @types/d3@latest --save-exact"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@types/d3-selection": "^1.4.1",
+    "@typescript-eslint/eslint-plugin": "2.0.0",
+    "@typescript-eslint/parser": "2.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "dependency-cruiser": "5.0.1",
+    "eslint": "6.2.1",
+    "rimraf": "^3.0.0",
+    "ts-loader": "^6.0.4",
+    "typescript": "3.5.3",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0"
+  },
+  "dependencies": {
+    "d3-selection": "^1.4.0"
+  }
+}
