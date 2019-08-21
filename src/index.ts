@@ -9,6 +9,8 @@ import { ERROR } from './strings'
 import { readJSON, getFirstFileOfType } from './handleFile'
 import { preventDefault } from './event-utils'
 
+import * as Bookmark from 'Bookmark'
+
 /**
  * 
  * 
@@ -53,7 +55,7 @@ select('#scene-hello').on('drop',
       const file = getFirstFileOfType('application/json', dt.files)
       if (!file) throw new Error(ERROR.NO_JSON_IN_FILELIST)
 
-      let bookmarkData = await readJSON(file)
+      let bookmarkData: Bookmark.Store = await readJSON(file)
       console.log(bookmarkData)
     } catch (error) {
       console.log(error)
@@ -72,7 +74,7 @@ select('#select-file').on('change',
   async function (this: { files: FileList }) {
     try {
       let file = this.files[0]
-      let bookmarkData = await readJSON(file)
+      let bookmarkData: Bookmark.Store = await readJSON(file)
       console.log(bookmarkData)
     } catch (error) {
       console.log(error)
