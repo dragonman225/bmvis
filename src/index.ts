@@ -3,13 +3,51 @@
  * The following code describes the control flow of this application
  */
 
-import { select, event } from 'd3-selection'
+import { Scene, SceneController } from './scenectl'
+import { ignoreDrag, loadChosenFile, loadDroppedFile, processData } from './hello-passage-details'
+import { getSliderVal, initGraph, updateGraph } from './graph-passage-details'
 
-import { ERROR } from './strings'
-import { readJSON, getFirstFileOfType } from './handleFile'
-import { preventDefault } from './event-utils'
+/**
+ * Scenes
+ */
 
-import * as Bookmark from 'Bookmark'
+const scenectl = new SceneController()
+
+const hello = new Scene({
+  id: '#hello'
+})
+
+const graph = new Scene({
+  id: '#graph',
+  render: initGraph
+})
+
+scenectl.add(hello, graph)
+
+startApp()
+
+function startApp() {
+
+  /** SEvents of Scene: Hello */
+  const dragFile = { selector: '#hello', eType: 'dragenter dragover' }
+  const dropFile = { selector: '#hello', eType: 'drop' }
+  const chooseFile = { selector: '#select-file', eType: 'change' }
+
+  /** SEvents of Scene: Graph */
+  const moveSlider = { selector: '#graph__date-slider input', eType: 'input' }
+
+  /** Passage of Scene: Hello */
+  hello.when(dragFile).do(ignoreDrag)
+  hello.when(dropFile).do(loadDroppedFile, processData, printData, toView(graph))
+  hello.when(chooseFile).do(loadChosenFile, processData, printData, toView(graph))
+
+  /** Passage of Scene: Graph */
+  graph.when(moveSlider).do(getSliderVal, printData, updateGraph)
+
+  /** Start story */
+  scenectl.switchTo(hello)
+
+}
 
 /**
  * 
@@ -24,71 +62,29 @@ import * as Bookmark from 'Bookmark'
  */
 
 /**
- * Drag and drop to provide bookmark file
- * @see https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#Selecting_files_using_drag_and_drop
- * 
- * In d3, use dedicated `event` object instead of passing `e` with functions 
- * to access event context.
- * 
- * Trying to access `e` passed by function leads to errors:
- * @see https://stackoverflow.com/questions/30420593/d3-js-image-mouseenter-stoppropagation-throw-error
- */
-
-select('#scene-hello').on('dragenter dragover',
-  function () {
-    preventDefault(event)
-  }
-)
-
-select('#scene-hello').on('drop',
-  async function () {
-    try {
-      preventDefault(event)
-
-      const dt = event.dataTransfer
-      if (!dt) throw new Error(ERROR.NO_FILES_IN_DT)
-
-      /**
-       * If user drop multiple files, find the first one being JSON 
-       * in FileList.
-       */
-      const file = getFirstFileOfType('application/json', dt.files)
-      if (!file) throw new Error(ERROR.NO_JSON_IN_FILELIST)
-
-      let bookmarkData: Bookmark.Store = await readJSON(file)
-      console.log(bookmarkData)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-)
-
-
-
-/**
- * Choose file with file-chooser to provide bookmark file
- * @see https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
- */
-
-select('#select-file').on('change',
-  async function (this: { files: FileList }) {
-    try {
-      let file = this.files[0]
-      let bookmarkData: Bookmark.Store = await readJSON(file)
-      console.log(bookmarkData)
-    } catch (error) {
-      console.log(error)
-    }
-  } as any
-)
-
-/**
  *
  *
  * Scene: Graph
- * 
+ *
  * Description:
  * In this scene, users can view visialized data of their bookmarks.
  *
  *
  */
+
+/**
+ * 
+ * 
+ * Utils
+ * 
+ * 
+ */
+
+function printData(data: any) {
+  console.log(data)
+  return data
+}
+
+function toView(scene: Scene): Function {
+  return function () { scenectl.switchTo(scene) }
+}

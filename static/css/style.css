@@ -3,10 +3,24 @@ html, body {
   margin: 0;
 }
 
-#scene-hello {
+.scene-full {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
+}
+
+#graph__draw {
+  flex: 1;
+}
+
+#graph__date-slider {
+  flex: 0 0 80px;
+  display: flex;
+  justify-content: center;
+}
+
+#graph__date-slider > input {
+  width: 80%;
 }

@@ -2,9 +2,9 @@ declare module 'Bookmark' {
   export interface Store {
     checksum: string
     roots: {
-      bookmark_bar: Node
-      other: Node
-      synced: Node
+      bookmark_bar: FolderNode
+      other: FolderNode
+      synced: FolderNode
     }
     version: number
   }
