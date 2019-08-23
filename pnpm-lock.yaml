@@ -3,9 +3,11 @@ dependencies:
   '@types/d3-force': 1.2.1
   d3-drag: 1.2.4
   d3-force: 2.0.1
+  d3-scale: 3.0.1
   d3-selection: 1.4.0
 devDependencies:
   '@types/d3': 5.7.2
+  '@types/d3-scale': 2.1.1
   '@types/d3-selection': 1.4.1
   '@typescript-eslint/eslint-plugin': 2.0.0_3cafee28902d96627d4743e014bc28ff
   '@typescript-eslint/parser': 2.0.0_eslint@6.2.1
@@ -1295,6 +1297,14 @@ packages:
     dev: true
     resolution:
       integrity: sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
+  /d3-array/2.3.1:
+    dev: false
+    resolution:
+      integrity: sha512-YlOh8kwqIz0pDECEdCeqVNelaLQXznD0g6yidhhklMgKxKqbNDrYfoudLMkk9THlqvFll+pXMmXYAyN49yWsmg==
+  /d3-color/1.3.0:
+    dev: false
+    resolution:
+      integrity: sha512-NHODMBlj59xPAwl2BDiO2Mog6V+PrGRtBfWKqKRrs9MCqlSkIEb0Z/SfY7jW29ReHTDC/j+vwXhnZcXI3+3fbg==
   /d3-dispatch/1.0.5:
     dev: false
     resolution:
@@ -1314,14 +1324,44 @@ packages:
     dev: false
     resolution:
       integrity: sha512-zh73/N6+MElRojiUG7vmn+3vltaKon7iD5vB/7r9nUaBeftXMzRo5IWEG63DLBCto4/8vr9i3m9lwr1OTJNiCg==
+  /d3-format/1.3.2:
+    dev: false
+    resolution:
+      integrity: sha512-Z18Dprj96ExragQ0DeGi+SYPQ7pPfRMtUXtsg/ChVIKNBCzjO8XYJvRTC1usblx52lqge56V5ect+frYTQc8WQ==
+  /d3-interpolate/1.3.2:
+    dependencies:
+      d3-color: 1.3.0
+    dev: false
+    resolution:
+      integrity: sha512-NlNKGopqaz9qM1PXh9gBF1KSCVh+jSFErrSlD/4hybwoNX/gt1d8CDbDW+3i+5UOHhjC6s6nMvRxcuoMVNgL2w==
   /d3-quadtree/1.0.6:
     dev: false
     resolution:
       integrity: sha512-NUgeo9G+ENQCQ1LsRr2qJg3MQ4DJvxcDNCiohdJGHt5gRhBW6orIB5m5FJ9kK3HNL8g9F4ERVoBzcEwQBfXWVA==
+  /d3-scale/3.0.1:
+    dependencies:
+      d3-array: 2.3.1
+      d3-format: 1.3.2
+      d3-interpolate: 1.3.2
+      d3-time: 1.0.11
+      d3-time-format: 2.1.3
+    dev: false
+    resolution:
+      integrity: sha512-f+OsXyd0claf6ufjI52zBHyOnm6mmfFvYiGUU8UB2VumZpqCcxds5iWN1rcOACIHgw9MntTFLXmi4LBRmY4DwQ==
   /d3-selection/1.4.0:
     dev: false
     resolution:
       integrity: sha512-EYVwBxQGEjLCKF2pJ4+yrErskDnz5v403qvAid96cNdCMr8rmCYfY5RGzWz24mdIbxmDf6/4EAH+K9xperD5jg==
+  /d3-time-format/2.1.3:
+    dependencies:
+      d3-time: 1.0.11
+    dev: false
+    resolution:
+      integrity: sha512-6k0a2rZryzGm5Ihx+aFMuO1GgelgIz+7HhB4PH4OEndD5q2zGn1mDfRdNrulspOfR6JXkb2sThhDK41CSK85QA==
+  /d3-time/1.0.11:
+    dev: false
+    resolution:
+      integrity: sha512-Z3wpvhPLW4vEScGeIMUckDW7+3hWKOQfAWg/U7PlWBnQmeKQ00gCUsTtWSYulrKNA7ta8hJ+xXc6MHrMuITwEw==
   /d3-timer/1.0.9:
     dev: false
     resolution:
@@ -5059,12 +5099,14 @@ specifiers:
   '@types/d3': ^5.7.2
   '@types/d3-drag': ^1.2.3
   '@types/d3-force': ^1.2.1
+  '@types/d3-scale': ^2.1.1
   '@types/d3-selection': ^1.4.1
   '@typescript-eslint/eslint-plugin': 2.0.0
   '@typescript-eslint/parser': 2.0.0
   copy-webpack-plugin: ^5.0.4
   d3-drag: ^1.2.4
   d3-force: ^2.0.1
+  d3-scale: ^3.0.1
   d3-selection: ^1.4.0
   dependency-cruiser: 5.0.1
   eslint: 6.2.1

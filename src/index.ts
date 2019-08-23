@@ -4,8 +4,8 @@
  */
 
 import { Scene, SceneController } from './scenectl'
-import { ignoreDrag, loadChosenFile, loadDroppedFile, processData } from './hello-passage-details'
-import { getSliderVal, initGraph, updateGraph } from './graph-passage-details'
+import { ignoreDrag, loadChosenFile, loadDroppedFile, processData } from './hello-scene'
+import { getSliderVal, initGraph, updateGraph } from './graph-scene'
 
 /**
  * Scenes
@@ -36,41 +36,18 @@ function startApp() {
   /** SEvents of Scene: Graph */
   const moveSlider = { selector: '#graph__slider input', eType: 'input' }
 
-  /** Passage of Scene: Hello */
+  /** Scene: Hello */
   hello.when(dragFile).do(ignoreDrag)
   hello.when(dropFile).do(loadDroppedFile, processData, printData, toView(graph))
   hello.when(chooseFile).do(loadChosenFile, processData, printData, toView(graph))
 
-  /** Passage of Scene: Graph */
+  /** Scene: Graph */
   graph.when(moveSlider).do(getSliderVal, printData, updateGraph)
 
-  /** Start story */
+  /** Start */
   scenectl.switchTo(hello)
 
 }
-
-/**
- * 
- * 
- * Scene: Hello
- * 
- * Description:
- * In this scene, users can drag and drop file or choose file to provide 
- * their bookmark file.
- *
- * 
- */
-
-/**
- *
- *
- * Scene: Graph
- *
- * Description:
- * In this scene, users can view visialized data of their bookmarks.
- *
- *
- */
 
 /**
  * 
