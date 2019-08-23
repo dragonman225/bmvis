@@ -1,8 +1,16 @@
-import * as Bookmark from 'Bookmark'
+import * as Bookmark from 'bookmark'
 
 type globalDataStore = {
   bookmarkStore?: Bookmark.Store
-  bookmarkArray?: (Bookmark.UrlNode & { folderPath: string })[]
+  bookmarkArray?: FormattedBookmark[]
+}
+
+type FormattedBookmark = {
+  createdTime: number
+  id: string
+  name: string
+  url: string
+  folderPath: string
 }
 
 const globalDataStore: globalDataStore = {

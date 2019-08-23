@@ -5,22 +5,53 @@ html, body {
 
 .scene-full {
   text-align: center;
+  height: 100%;
+}
+
+.flex-col-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
+}
+
+#graph {
+  background: #111;
 }
 
 #graph__draw {
   flex: 1;
 }
 
-#graph__date-slider {
-  flex: 0 0 80px;
-  display: flex;
-  justify-content: center;
+#graph__draw > svg {
+  display: block;
+  margin: 0 auto;
 }
 
-#graph__date-slider > input {
+#graph__slider {
+  flex: 0 0 120px;
+  align-items: center;
+}
+
+#graph__slider > h3 {
+  color: #ddd;
+}
+
+#graph__slider > input {
   width: 80%;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgb(182, 108, 243);
+  position: absolute;
+}
+
+foreignObject div {
+  height: 100%;
+  color: #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

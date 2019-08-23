@@ -11,7 +11,7 @@
   <!-- 
     Scene: Hello
   -->
-  <div id="hello" class="scene-full">
+  <div id="hello" class="scene-full flex-col-center">
     <h1>Chromium JSON Bookmark Visualizer</h1>
     <h3>Drag bookmark file here to start</h3>
     <h3>
@@ -23,9 +23,10 @@
   <!-- 
     Scene: Graph
   -->
-  <div id="graph" class="scene-full">
-    <div id="graph__draw"></div>
-    <div id="graph__date-slider">
+  <div id="graph" class="scene-full flex-col-center">
+    <div id="graph__draw" class="flex-col-center"></div>
+    <div id="graph__slider" class="flex-col-center">
+      <h3></h3>
       <input type="range" min="1" max="100" value="50">
     </div>
   </div>

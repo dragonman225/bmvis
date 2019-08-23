@@ -1,4 +1,4 @@
-declare module 'Bookmark' {
+declare module 'bookmark' {
   export interface Store {
     checksum: string
     roots: {
@@ -30,5 +30,13 @@ declare module 'Bookmark' {
   export enum NodeType {
     Folder = "folder",
     URL = "url"
+  }
+
+  export interface FormattedBookmark {
+    createdTime: number
+    id: string
+    name: string
+    url: string
+    folderPath: string
   }
 }

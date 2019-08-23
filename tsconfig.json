@@ -18,7 +18,10 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "typeRoots": [
+      "./src/@types"
+    ]
   },
   "include": [
     "./src/**/*"

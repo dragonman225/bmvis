@@ -3,7 +3,7 @@ import { readJSON, getFirstFileOfType } from './handleFile'
 import { ERROR } from './strings'
 import { globalDataStore } from './global-store'
 
-import * as Bookmark from 'Bookmark'
+import * as Bookmark from 'bookmark'
 
 /**
  * Drag and drop to get file
@@ -59,6 +59,14 @@ async function loadChosenFile(this: { files: FileList }) {
   }
 }
 
+type FormattedBookmark = {
+  createdTime: number
+  id: string
+  name: string
+  url: string
+  folderPath: string
+}
+
 function processData(bookmark: Bookmark.Store) {
   try {
     let bookmarkTrees = [
@@ -67,10 +75,16 @@ function processData(bookmark: Bookmark.Store) {
       bookmark.roots.synced
     ]
     let foldreNodePath: Bookmark.FolderNode[] = []
-    let bookmarkArray: (Bookmark.UrlNode & { folderPath: string })[] = []
+    let bookmarkArray: FormattedBookmark[] = []
 
     bookmarkTrees.forEach(node => {
       dfs(node, foldreNodePath, bookmarkArray)
+    })
+
+    bookmarkArray = bookmarkArray.sort((later, former) => {
+      if (later.createdTime > former.createdTime) return 1
+      else if (later.createdTime < former.createdTime) return -1
+      else return 0
     })
 
     globalDataStore.bookmarkArray = bookmarkArray
@@ -83,14 +97,14 @@ function processData(bookmark: Bookmark.Store) {
 function dfs(
   tree: Bookmark.FolderNode,
   foldreNodePath: Bookmark.FolderNode[],
-  bookmarkArray: (Bookmark.UrlNode & { folderPath: string })[]
+  bookmarkArray: FormattedBookmark[]
 ) {
 
   if (tree.children) {
     foldreNodePath.push(tree)
 
     tree.children.forEach(node => {
-      if (node.type === Bookmark.NodeType.Folder) {
+      if (node.type === 'folder') {
         let tree = node as Bookmark.FolderNode
 
         dfs(tree, foldreNodePath, bookmarkArray)
@@ -99,7 +113,10 @@ function dfs(
         let leaf = node as Bookmark.UrlNode
         let path = foldreNodePath.map(n => n.name).join('/')
         bookmarkArray.push({
-          ...leaf,
+          createdTime: parseInt(leaf.date_added),
+          id: leaf.id,
+          name: leaf.name,
+          url: leaf.url,
           folderPath: path
         })
       }

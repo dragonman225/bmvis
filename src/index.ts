@@ -34,7 +34,7 @@ function startApp() {
   const chooseFile = { selector: '#select-file', eType: 'change' }
 
   /** SEvents of Scene: Graph */
-  const moveSlider = { selector: '#graph__date-slider input', eType: 'input' }
+  const moveSlider = { selector: '#graph__slider input', eType: 'input' }
 
   /** Passage of Scene: Hello */
   hello.when(dragFile).do(ignoreDrag)
