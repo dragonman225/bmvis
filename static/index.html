@@ -3,6 +3,7 @@
 
 <head>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -11,13 +12,45 @@
   <!-- 
     Scene: Hello
   -->
-  <div id="hello" class="scene-full flex-col-center">
-    <h1>Chromium JSON Bookmark Visualizer</h1>
-    <h3>Drag bookmark file here to start</h3>
-    <h3>
-      <span>Or, </span>
-      <input type="file" id="select-file">
-    </h3>
+  <div id="hello" class="flex-col-center">
+    <div class="hello__title">
+      <h1>
+        Chromium JSON Bookmark Visualizer
+        <a class="github-button" href="https://github.com/dragonman225/bmvis" data-icon="octicon-star" data-size="large"
+          data-show-count="true" aria-label="Star dragonman225/bmvis on GitHub">Star</a>
+      </h1>
+      <h3>Drag bookmark file here to start</h3>
+      <h3>
+        <span>Or, </span>
+        <input type="file" id="select-file">
+      </h3>
+    </div>
+    <div class="hello__main">
+      <div class="hello__info">
+        <h2>How to get JSON bookmark ?</h2>
+        <h3>Linux</h3>
+        <p>Google Chrome</p>
+        <code>~/.config/google-chrome/Default/Bookmarks</code>
+        <p>Chromium</p>
+        <code>~/.config/chromium/Default/Bookmarks</code>
+        <h3>Windows</h3>
+        <p>Google Chrome</p>
+        <code>C:\Users\{Your Username}\AppData\Local\Google\Chrome\User Data\Default\Bookmarks</code>
+        <h3>macOS</h3>
+        <p>Google Chrome</p>
+        <code>~/Library/Application Support/Google/Chrome/Default/Bookmarks</code>
+        <div class="callout">
+          <p>If above default locations don't exist, please go to <a>chrome://version</a> (manually copy and
+            paste in the URL bar), and look for <strong>Profile Path</strong>. Then, go to the <strong>Profile Path</strong> folder on your computer, you should find a file named
+            <strong>Bookmarks</strong>.</p>
+        </div>
+      </div>
+      <div class="hello__info">
+        <p>Data Visualization with <a href="https://d3js.org/">D3.js</a></p>
+        <p>The hand-written style font is <a href="https://nonty.net/font/setofont/">SetoFont</a></p>
+        <p>Application developed by <a href="https://github.com/dragonman225">dragonman225@github</a></p>
+      </div>
+    </div>
   </div>
 
   <!-- 
@@ -31,6 +64,10 @@
     </div>
   </div>
 
+  <!-- 
+    Scripts
+   -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="index.js"></script>
 </body>
 
