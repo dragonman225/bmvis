@@ -3,7 +3,7 @@
  * The following code describes the control flow of this application
  */
 
-import { Scene, SceneController } from './scenectl'
+import { Scene, SceneController } from './lib/scene-ctl'
 import { ignoreDrag, loadChosenFile, loadDroppedFile, processData } from './hello-scene'
 import { getSliderVal, initGraph, updateGraph } from './graph-scene'
 

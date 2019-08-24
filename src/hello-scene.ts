@@ -1,7 +1,7 @@
-import { preventDefault } from './event-utils'
-import { readJSON, getFirstFileOfType } from './handleFile'
-import { ERROR } from './strings'
-import { globalDataStore } from './global-store'
+import { preventDefault } from './lib/event-utils'
+import { readJSON, getFirstFileOfType } from './lib/handleFile'
+import { ERROR } from './lib/strings'
+import { globalDataStore } from './global-state'
 
 import * as Bookmark from 'bookmark'
 
@@ -18,7 +18,7 @@ import * as Bookmark from 'bookmark'
 
 function ignoreDrag(e: any) {
   preventDefault(e)
-}
+} // ignoreDrag
 
 async function loadDroppedFile(e: any) {
   try {
@@ -39,7 +39,7 @@ async function loadDroppedFile(e: any) {
   } catch (error) {
     console.log(error)
   }
-}
+} // loadDroppedFile
 
 
 
@@ -57,15 +57,13 @@ async function loadChosenFile(this: { files: FileList }) {
   } catch (error) {
     console.log(error)
   }
-}
+} // loadChosenFile
 
-type FormattedBookmark = {
-  createdTime: number
-  id: string
-  name: string
-  url: string
-  folderPath: string
-}
+
+
+/**
+ * Flatten bookmark tree into array
+ */
 
 function processData(bookmark: Bookmark.Store) {
   try {
@@ -75,7 +73,7 @@ function processData(bookmark: Bookmark.Store) {
       bookmark.roots.synced
     ]
     let foldreNodePath: Bookmark.FolderNode[] = []
-    let bookmarkArray: FormattedBookmark[] = []
+    let bookmarkArray: Bookmark.FormattedBookmark[] = []
 
     bookmarkTrees.forEach(node => {
       dfs(node, foldreNodePath, bookmarkArray)
@@ -92,12 +90,12 @@ function processData(bookmark: Bookmark.Store) {
   } catch (error) {
     console.log(error)
   }
-}
+} // processData
 
 function dfs(
   tree: Bookmark.FolderNode,
   foldreNodePath: Bookmark.FolderNode[],
-  bookmarkArray: FormattedBookmark[]
+  bookmarkArray: Bookmark.FormattedBookmark[]
 ) {
 
   if (tree.children) {
@@ -119,8 +117,8 @@ function dfs(
           url: leaf.url,
           folderPath: path
         })
-      }
-    })
+      } // else
+    }) // forEach
     
     foldreNodePath.pop()
   } // if

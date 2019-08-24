@@ -1,8 +1,8 @@
 import { select } from 'd3-selection'
 
-import { globalDataStore } from './global-store'
+import { globalDataStore } from './global-state'
 import { CircleGraph } from './circle-graph'
-import { ERROR } from './strings'
+import { ERROR } from './lib/strings'
 
 const timeSpan = 1000 * 1000 * 60 * 60 * 24 * 7 // microseconds
 const sliderStep = 1000 * 1000 * 60 * 60 * 24

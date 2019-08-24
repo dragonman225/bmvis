@@ -20,7 +20,7 @@
     "declaration": true,
     "declarationMap": true,
     "typeRoots": [
-      "./src/@types"
+      "src/typings"
     ]
   },
   "include": [

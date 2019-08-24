@@ -1,4 +1,4 @@
-import * as d3 from 'd3'
+import * as d3 from 'd3' // only for typings
 import { select, event } from 'd3-selection'
 import { drag } from 'd3-drag'
 import { forceSimulation, forceCenter, forceX, forceY, forceCollide, forceManyBody } from 'd3-force'
@@ -109,6 +109,7 @@ class CircleGraph {
     let htmlContainer = this.allGroups.append('a')
       .attr('href', (d: FormattedBookmark) => d.url)
       .attr('target', '_blank')
+      .attr('rel', 'nofollow noopener noreferrer')
       .append('foreignObject')
       .attr('x', this.width / 2)
       .attr('y', this.height / 2)
@@ -248,6 +249,7 @@ function updateTooltipPos(
 ) {
 
   const offbase = this.circleRadius / Math.sqrt(2) + 5
+  const mwMargin = 20
 
   let tx: string, ty: string, mw: number, mh: number,
     offx: number, offy: number
@@ -255,21 +257,21 @@ function updateTooltipPos(
   if (d.x > this.width / 2) {
     tx = '-100%'
     offx = -offbase
-    mw = d.x + offx
+    mw = d.x + offx - mwMargin
   } else {
     tx = '0%'
     offx = offbase
-    mw = this.width - d.x - offx
+    mw = this.width - d.x - offx - mwMargin
   }
 
   if (d.y > this.height / 2) {
     ty = '-100%'
     offy = -offbase
-    mh = d.y + offy
+    mh = d.y + offy - mwMargin
   } else {
     ty = '0%'
     offy = offbase
-    mh = this.height - d.y - offy
+    mh = this.height - d.y - offy - mwMargin
   }
 
   this.tooltip
