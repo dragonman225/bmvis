@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rimraf dist && webpack --mode=development && npm run report",
     "dev": "webpack-dev-server",
+    "deploy": "git subtree push --prefix dist origin gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1",
     "report": "depcruise --exclude '^node_modules' --output-type dot --prefix 'https://github.com/dragonman225/bmvis/tree/master/' src/index.ts | dot -T svg > report/deps_graph.svg",
     "upgrade": "pnpm i typescript@latest d3@latest eslint@latest dependency-cruiser@latest @typescript-eslint/parser@latest @typescript-eslint/eslint-plugin@latest @types/d3@latest --save-exact"

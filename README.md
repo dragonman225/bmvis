@@ -6,6 +6,10 @@ Easily find bookmarks with its added time span, or recall what you've bookmarked
 
 ![demo-gif](assets/demo.gif)
 
+## Project Structure
+
+![deps_graph](report/deps_graph.svg)
+
 ## Things that can be improved
 
 * Find another hand-written font that supports more Chinese characters.

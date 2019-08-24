@@ -60,11 +60,6 @@ function updateGraph(sliderValue: number) {
     .filter(b => {
       return (b.createdTime >= sliderValue) && (b.createdTime <= sliderValue + timeSpan)
     })
-    .filter(b => {
-      return b.folderPath.indexOf('FB') === -1
-        && b.folderPath.indexOf('Media') === -1
-        && b.folderPath.indexOf('tmp') === -1
-    })
 
   console.log(bookmarksToShow, timeSpan, sliderValue + timeSpan)
 
