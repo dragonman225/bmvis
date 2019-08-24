@@ -109,7 +109,7 @@ function dfs(
 
       } else {
         let leaf = node as Bookmark.UrlNode
-        let path = foldreNodePath.map(n => n.name).join('/')
+        let path = foldreNodePath.map(n => n.name)
         bookmarkArray.push({
           createdTime: parseInt(leaf.date_added),
           id: leaf.id,

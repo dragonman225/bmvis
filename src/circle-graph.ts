@@ -91,7 +91,7 @@ class CircleGraph {
     /** Draw a SVG <circle> */
     this.allGroups.append('circle')
       .attr('r', this.circleRadius)
-      .attr('fill', (d: FormattedBookmark) => this.getCircleColor(d.folderPath))
+      .attr('fill', (d: FormattedBookmark) => this.getCircleColor(d.folderPath.join('')))
       .attr('stroke', 'black')
       .attr('stroke-width', this.circleBorder)
       .attr('cx', this.width / 2)
@@ -277,7 +277,7 @@ function updateTooltipPos(
   this.tooltip
     .html(`\
 <div class="tooltip__name">${d.name}</div>
-<div class="tooltip__folder">${d.folderPath.split('/').join(' → ')}</div>
+<div class="tooltip__folder">${d.folderPath.join(' → ')}</div>
 <div class="tooltip__url" >${d.url}</div>`)
     .style('left', `${d.x + offx}px`)
     .style('top', `${d.y + offy}px`)

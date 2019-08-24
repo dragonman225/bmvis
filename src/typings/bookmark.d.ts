@@ -37,6 +37,6 @@ declare module 'bookmark' {
     id: string
     name: string
     url: string
-    folderPath: string
+    folderPath: string[]
   }
 }
