@@ -1,0 +1,1 @@
+{"version":3,"file":"global-state.d.ts","sourceRoot":"","sources":["../src/global-state.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,QAAQ,MAAM,UAAU,CAAA;AAEpC,aAAK,eAAe,GAAG;IACrB,aAAa,CAAC,EAAE,QAAQ,CAAC,KAAK,CAAA;IAC9B,aAAa,CAAC,EAAE,QAAQ,CAAC,iBAAiB,EAAE,CAAA;CAC7C,CAAA;AAED,QAAA,MAAM,eAAe,EAAE,eACtB,CAAA;AAED,OAAO,EAAE,eAAe,EAAE,CAAA"}
